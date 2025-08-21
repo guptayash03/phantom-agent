@@ -1,80 +1,116 @@
-🤖 AI Automation Agent for Social Media ie., Instagram, Linkedin, Reddit, Twitter
-An intelligent agent that automates the creation and publication of engaging content for various social media platforms like Instagram, LinkedIn, Twitter, and Reddit.
+# 🚀 AI Co-Creator for Social Media
+*Agentic Automation of content creation & posting for Instagram, LinkedIn, Twitter (X), Reddit, and more.*
 
-📜 Overview
-The AI Co-Creator is a powerful Agent designed to streamline your social media content strategy. By simply providing a title or a topic, the application leverages a sophisticated multi-agent system to generate high-quality, platform-specific posts complete with relevant hashtags and compelling images. It then automates the entire process, from content creation to direct publishing on your selected social media channels, saving you time and effort while boosting your online presence.
+---
 
-🛠️ Tech Stack
-This project is built with a modern, robust technology stack to ensure a seamless and powerful user experience.
+## 📖 Overview
+AI Co-Creator is an **end-to-end automation agent** that helps creators, marketers, and businesses scale their social media presence.  
+Simply **enter the title of a post**, and the system will:
+- Generate engaging **post content with hashtags**.
+- Create or fetch **relevant images**.
+- Automatically **publish** to selected platforms (LinkedIn, Instagram, Twitter/X, Reddit, etc.).
 
-Frontend:
+Built with AI workflows and automation, it reduces manual effort and ensures **consistent, platform-optimized posting**.
 
-Next.js: A React framework for building fast, server-rendered applications.
+---
 
-Tailwind CSS: A utility-first CSS framework for rapid UI development.
+## 🛠️ Tech Stack
 
-Shadcn/ui: A collection of beautifully designed, reusable components.
+**Frontend**
+- [Next.js](https://nextjs.org/) – React framework for fast, SEO-friendly UI  
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework  
+- [Shadcn/ui](https://ui.shadcn.com/) – Component library for modern UI  
 
-Backend & AI Orchestration:
+**Backend**
+- [Python](https://www.python.org/) – Core backend logic  
+- [LangChain](https://www.langchain.com/) – AI orchestration  
+- [LangGraph](https://www.langchain.com/langgraph) – Agentic workflows  
+- [n8n](https://n8n.io/) – Workflow automation  
+- [CrewAI](https://www.crewai.com/) – AI agent collaboration  
 
-Python: The core language for our backend logic and AI agents.
+**APIs & Integrations**
+- [OpenAI](https://platform.openai.com/) – Content & image generation  
+- [Google](https://cloud.google.com/) – Sheets, Drive & Gmail integrations  
+- [Meta API](https://developers.facebook.com/docs/instagram-api) – Instagram automation  
+- [LinkedIn API](https://learn.microsoft.com/en-us/linkedin/) – LinkedIn publishing  
+- [Twitter/X API](https://developer.twitter.com/en/docs) – Tweet automation  
+- [Reddit API](https://www.reddit.com/dev/api/) – Reddit posting  
 
-LangChain: A framework for developing applications powered by language models.
+---
 
-LangGraph: A library for building stateful, multi-actor applications with LLMs.
+## ⚡ Features
+✅ Automatically **trigger workflows** based on schedule or user input  
+✅ Generate **platform-specific posts** (LinkedIn, Instagram, Twitter, Reddit)  
+✅ Create **relevant images** for posts  
+✅ Direct **upload to platforms** without manual intervention  
+✅ AI-powered **content writing with hashtags**  
+✅ Approval workflows with **regeneration options**  
+✅ **Google Sheets integration** for tracking  
 
-n8n: A workflow automation tool to connect various services and APIs.
+---
+## 🔄 Technical Workflow
 
-CrewAI: A framework for orchestrating role-playing, autonomous AI agents.
+- User Input: Enter post title (via frontend UI or Google Sheets).
 
-APIs & Services:
+- AI Content Generation:
 
-OpenAI: For state-of-the-art text and image generation.
+- LangChain + OpenAI generates post content with hashtags.
 
-Google APIs: For various integrations, potentially including Google Sheets for content scheduling or analytics.
+- Formats content per platform requirements.
 
-Meta API: For posting to Instagram and Facebook.
+- Approval Workflow:
 
-LinkedIn API: For publishing content on LinkedIn.
+- Sends draft via Gmail for confirmation.
 
-Twitter (X) API: For automated tweeting.
+- Option to regenerate post if needed.
 
-Reddit API: For posting to relevant subreddits.
+- Image Handling:
 
-✨ Features
-Automated Workflow Trigger: Kickstart the content creation process automatically based on predefined triggers (e.g., a new entry in a Google Sheet).
+- Generate new image (OpenAI/Stable Diffusion) OR fetch existing one.
 
-Platform-Specific Content Generation: The AI agent intelligently crafts content tailored to the tone, style, and character limits of each social media platform.
+- Publishing:
 
-Intelligent Hashtag Creation: Automatically generates relevant and trending hashtags to maximize reach and engagement.
+- Directly upload to LinkedIn, Instagram, Twitter, Reddit.
 
-AI-Powered Image Generation: Creates unique, contextually relevant images to accompany the text posts.
+- Tracking:
 
-Direct Platform Upload: Seamlessly posts the generated content directly to your connected social media accounts.
+- Update Google Sheet with status & post link.
 
-Approval Workflow: Includes an optional email-based approval step to review and confirm content before it goes live.
+---
+## ⚙️ Setup
 
-⚙️ Technical Workflow
-The application operates through a sophisticated, event-driven workflow orchestrated by n8n and powered by AI agents.
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/ai-co-creator.git
+cd ai-co-creator
+```
+### 2. Install dependencies
+#### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+#### Backend
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
 
-Trigger Event: The process begins with a trigger, such as a webhook or a new row added to a Google Sheet containing the post title.
-
-Content Generation:
-
-The title is passed to an AI agent (built with LangChain/CrewAI) that generates the main body of the post.
-
-The initial text is then formatted and tailored for each target platform (LinkedIn, Twitter, etc.).
-
-Approval (Optional): An email is sent to a designated approver with the generated content. The workflow pauses until the content is confirmed.
-
-Image Generation:
-
-Once the text is finalized or approved, a prompt is sent to an image generation model (like DALL-E via OpenAI API) to create a relevant visual.
-
-The system checks if an image was successfully generated.
-
-Publishing:
-
-The formatted text and the generated image are sent to the respective social media platform APIs (LinkedIn, Twitter, etc.) for publishing.
-
-Logging & Confirmation: The status of the post (e.g., "Posted Successfully") is updated in the original data source, like the Google Sheet, for tracking purposes.
+pip install -r requirements.txt
+```
+### 3. Configure environment variables
+#### Create a .env file in both frontend and backend directories:
+```bash
+OPENAI_API_KEY=your_key
+GOOGLE_API_KEY=your_key
+LINKEDIN_ACCESS_TOKEN=your_token
+TWITTER_BEARER_TOKEN=your_token
+REDDIT_CLIENT_ID=your_id
+REDDIT_SECRET=your_secret
+```
+### 4. Run n8n workflows
+```bash
+n8n start
+```
